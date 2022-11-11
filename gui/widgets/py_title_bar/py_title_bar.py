@@ -70,7 +70,7 @@ class PyTitleBar(QWidget):
         radius = 8,
         font_family = "Segoe UI",
         title_size = 10,
-        is_custom_title_bar = True,
+        is_custom_title_bar = False,
     ):
         super().__init__()
 
@@ -103,58 +103,8 @@ class PyTitleBar(QWidget):
         # ADD BG COLOR
         self.bg.setStyleSheet(f"background-color: {bg_color}; border-radius: {radius}px;")
 
-        # SET LOGO AND WIDTH
-        self.top_logo.setMinimumWidth(logo_width)
-        self.top_logo.setMaximumWidth(logo_width)
-        #self.top_logo.setPixmap(Functions.set_svg_image(logo_image))
-
-        # MOVE WINDOW / MAXIMIZE / RESTORE
-        # ///////////////////////////////////////////////////////////////
-        def moveWindow(event):
-            # IF MAXIMIZED CHANGE TO NORMAL
-            if parent.isMaximized():
-                self.maximize_restore()
-                #self.resize(_old_size)
-                curso_x = parent.pos().x()
-                curso_y = event.globalPos().y() - QCursor.pos().y()
-                parent.move(curso_x, curso_y)
-            # MOVE WINDOW
-            if event.buttons() == Qt.LeftButton:
-                parent.move(parent.pos() + event.globalPos() - parent.dragPos)
-                parent.dragPos = event.globalPos()
-                event.accept()
-
-        # MOVE APP WIDGETS
-        if is_custom_title_bar:
-            self.top_logo.mouseMoveEvent = moveWindow
-            self.div_1.mouseMoveEvent = moveWindow
-            self.title_label.mouseMoveEvent = moveWindow
-            self.div_2.mouseMoveEvent = moveWindow
-            self.div_3.mouseMoveEvent = moveWindow
-
-        # MAXIMIZE / RESTORE
-        if is_custom_title_bar:
-            self.top_logo.mouseDoubleClickEvent = self.maximize_restore
-            self.div_1.mouseDoubleClickEvent = self.maximize_restore
-            self.title_label.mouseDoubleClickEvent = self.maximize_restore
-            self.div_2.mouseDoubleClickEvent = self.maximize_restore
-
-        # ADD WIDGETS TO TITLE BAR
-        # ///////////////////////////////////////////////////////////////
-        self.bg_layout.addWidget(self.top_logo)
-        self.bg_layout.addWidget(self.div_1)
-        self.bg_layout.addWidget(self.title_label)
-        self.bg_layout.addWidget(self.div_2)
-
-        # ADD BUTTONS BUTTONS
-        # ///////////////////////////////////////////////////////////////
-        # Functions
-        self.minimize_button.released.connect(lambda: parent.showMinimized())
-        self.maximize_restore_button.released.connect(lambda: self.maximize_restore())
-        self.close_button.released.connect(lambda: parent.close())
-
         # Extra BTNs layout
-        self.bg_layout.addLayout(self.custom_buttons_layout)
+        self.bg_layout.addLayout(self.custom_buttons_layout) #BORRAR ESTA LÍNEA ELIMINA LA FUNCIONALIDAD DE LEFT COLUMN
 
         # ADD Buttons
         if is_custom_title_bar:            
@@ -197,9 +147,6 @@ class PyTitleBar(QWidget):
                 # ADD TO LAYOUT
                 self.custom_buttons_layout.addWidget(self.menu)
 
-            # ADD DIV
-            if self._is_custom_title_bar:
-                self.custom_buttons_layout.addWidget(self.div_3)
 
     # TITLE BAR MENU EMIT SIGNALS
     # ///////////////////////////////////////////////////////////////
@@ -214,38 +161,6 @@ class PyTitleBar(QWidget):
     def set_title(self, title):
         self.title_label.setText(title)
 
-    # MAXIMIZE / RESTORE
-    # maximize and restore parent window
-    # ///////////////////////////////////////////////////////////////
-    def maximize_restore(self, e = None):
-        global _is_maximized
-        global _old_size
-        
-        # CHANGE UI AND RESIZE GRIP
-        def change_ui():
-            if _is_maximized:
-                self._parent.ui.central_widget_layout.setContentsMargins(0,0,0,0)
-                self._parent.ui.window.set_stylesheet(border_radius = 0, border_size = 0)
-                self.maximize_restore_button.set_icon(
-                    Functions.set_svg_icon("icon_restore.svg")
-                )
-            else:
-                self._parent.ui.central_widget_layout.setContentsMargins(10,10,10,10)
-                self._parent.ui.window.set_stylesheet(border_radius = 10, border_size = 2)
-                self.maximize_restore_button.set_icon(
-                    Functions.set_svg_icon("icon_maximize.svg")
-                )
-
-        # CHECK EVENT
-        if self._parent.isMaximized():
-            _is_maximized = False
-            self._parent.showNormal()
-            change_ui()
-        else:
-            _is_maximized = True
-            _old_size = QSize(self._parent.width(), self._parent.height())
-            self._parent.showMaximized()
-            change_ui()
 
     # SETUP APP
     # ///////////////////////////////////////////////////////////////
@@ -261,19 +176,6 @@ class PyTitleBar(QWidget):
         self.bg_layout = QHBoxLayout(self.bg)
         self.bg_layout.setContentsMargins(10,0,5,0)
         self.bg_layout.setSpacing(0)
-
-        # DIVS
-        self.div_1 = PyDiv(self._div_color)
-        self.div_2 = PyDiv(self._div_color)
-        self.div_3 = PyDiv(self._div_color)
-
-        # LEFT FRAME WITH MOVE APP
-        self.top_logo = QLabel()
-        self.top_logo_layout = QVBoxLayout(self.top_logo)
-        self.top_logo_layout.setContentsMargins(0,0,0,0)
-        self.logo_svg = QSvgWidget()
-        self.logo_svg.load(Functions.set_svg_image(self._logo_image))
-        self.top_logo_layout.addWidget(self.logo_svg, Qt.AlignCenter, Qt.AlignCenter)
 
         # TITLE LABEL
         self.title_label = QLabel()

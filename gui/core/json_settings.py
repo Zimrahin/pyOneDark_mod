@@ -43,7 +43,7 @@ class Settings(object):
 						"copyright" : "",
 						"year" : 2022,
 						"theme_name" : "default",
-						"custom_title_bar": True,
+						"custom_title_bar": False,
 						"startup_size": [
 							1400,
 							720
@@ -65,7 +65,7 @@ class Settings(object):
 							"minimum" : 0,
 							"maximum" : 240
 						},
-						"time_animation" : 500,
+						"time_animation" : 400,
 						"font" : {
 							"family" : "Segoe UI",
 							"title_size" : 10,
