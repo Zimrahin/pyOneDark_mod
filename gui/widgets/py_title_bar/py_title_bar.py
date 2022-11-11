@@ -32,7 +32,7 @@ from . py_div import PyDiv
 
 # IMPORT BUTTON
 # ///////////////////////////////////////////////////////////////
-from . py_title_button import PyTitleButton
+from . py_title_button import PyTitleButton, Py3TitleButton
 
 # GLOBALS
 # ///////////////////////////////////////////////////////////////
@@ -286,7 +286,7 @@ class PyTitleBar(QWidget):
         self.custom_buttons_layout.setSpacing(3)
 
         # MINIMIZE BUTTON
-        self.minimize_button = PyTitleButton(
+        self.minimize_button = Py3TitleButton(
             self._parent,
             self._app_parent,
             tooltip_text = "Close app",
@@ -305,7 +305,7 @@ class PyTitleBar(QWidget):
         )
 
         # MAXIMIZE / RESTORE BUTTON
-        self.maximize_restore_button = PyTitleButton(
+        self.maximize_restore_button = Py3TitleButton(
             self._parent,
             self._app_parent,
             tooltip_text = "Maximize app",
@@ -324,7 +324,7 @@ class PyTitleBar(QWidget):
         )
 
         # CLOSE BUTTON
-        self.close_button = PyTitleButton(
+        self.close_button = Py3TitleButton(
             self._parent,
             self._app_parent,
             tooltip_text = "Close app",
