@@ -189,7 +189,6 @@ class UI_MainWindow(object):
 		self.right_column_frame.setMaximumWidth(self.settings["right_column_size"]["minimum"])
 
 		# IMPORT RIGHT COLUMN
-		# ///////////////////////////////////////////////////////////////
 		self.content_area_right_layout = QVBoxLayout(self.right_column_frame)
 		self.content_area_right_layout.setContentsMargins(5,5,5,5)
 		self.content_area_right_layout.setSpacing(0)
