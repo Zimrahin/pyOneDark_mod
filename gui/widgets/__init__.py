@@ -65,7 +65,3 @@ from . py_icon_button import PyIconButton
 # PY LINE EDIT
 # ///////////////////////////////////////////////////////////////
 from . py_line_edit import PyLineEdit
-
-# PY TABLE WIDGET
-# ///////////////////////////////////////////////////////////////
-from . py_table_widget import PyTableWidget
