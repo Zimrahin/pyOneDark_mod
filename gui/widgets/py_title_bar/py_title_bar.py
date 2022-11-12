@@ -26,18 +26,9 @@ from gui.core.functions import *
 # ///////////////////////////////////////////////////////////////
 from gui.core.json_settings import Settings
 
-# IMPORT DIV
-# ///////////////////////////////////////////////////////////////
-from . py_div import PyDiv
-
 # IMPORT BUTTON
 # ///////////////////////////////////////////////////////////////
 from . py_title_button import PyTitleButton, Py3TitleButton
-
-# GLOBALS
-# ///////////////////////////////////////////////////////////////
-_is_maximized = False
-_old_size = QSize()
 
 # PY TITLE BAR
 # Top bar with move application, maximize, restore, minimize,
@@ -106,13 +97,7 @@ class PyTitleBar(QWidget):
         # Extra BTNs layout
         self.bg_layout.addLayout(self.custom_buttons_layout) #BORRAR ESTA LÍNEA ELIMINA LA FUNCIONALIDAD DE LEFT COLUMN
 
-        # ADD Buttons
-        if is_custom_title_bar:            
-            self.bg_layout.addWidget(self.minimize_button)
-            self.bg_layout.addWidget(self.maximize_restore_button)
-            self.bg_layout.addWidget(self.close_button)
-
-    # ADD BUTTONS TO TITLE BAR
+     # ADD BUTTONS TO TITLE BAR
     # Add btns and emit signals
     # ///////////////////////////////////////////////////////////////
     def add_menus(self, parameters):
@@ -184,65 +169,9 @@ class PyTitleBar(QWidget):
 
         # CUSTOM BUTTONS LAYOUT
         self.custom_buttons_layout = QHBoxLayout()
+        self.custom_buttons_layout.setAlignment(Qt.AlignRight)
         self.custom_buttons_layout.setContentsMargins(0,0,0,0)
         self.custom_buttons_layout.setSpacing(3)
-
-        # MINIMIZE BUTTON
-        self.minimize_button = Py3TitleButton(
-            self._parent,
-            self._app_parent,
-            tooltip_text = "Close app",
-            dark_one = self._dark_one,
-            bg_color = self._btn_bg_color,
-            bg_color_hover = self._btn_bg_color_hover,
-            bg_color_pressed = self._btn_bg_color_pressed,
-            icon_color = self._icon_color,
-            icon_color_hover = self._icon_color_hover,
-            icon_color_pressed = self._icon_color_pressed,
-            icon_color_active = self._icon_color_active,
-            context_color = self._context_color,
-            text_foreground = self._text_foreground,
-            radius = 6,
-            icon_path = Functions.set_svg_icon("icon_minimize.svg")
-        )
-
-        # MAXIMIZE / RESTORE BUTTON
-        self.maximize_restore_button = Py3TitleButton(
-            self._parent,
-            self._app_parent,
-            tooltip_text = "Maximize app",
-            dark_one = self._dark_one,
-            bg_color = self._btn_bg_color,
-            bg_color_hover = self._btn_bg_color_hover,
-            bg_color_pressed = self._btn_bg_color_pressed,
-            icon_color = self._icon_color,
-            icon_color_hover = self._icon_color_hover,
-            icon_color_pressed = self._icon_color_pressed,
-            icon_color_active = self._icon_color_active,
-            context_color = self._context_color,
-            text_foreground = self._text_foreground,
-            radius = 6,
-            icon_path = Functions.set_svg_icon("icon_maximize.svg")
-        )
-
-        # CLOSE BUTTON
-        self.close_button = Py3TitleButton(
-            self._parent,
-            self._app_parent,
-            tooltip_text = "Close app",
-            dark_one = self._dark_one,
-            bg_color = self._btn_bg_color,
-            bg_color_hover = self._btn_bg_color_hover,
-            bg_color_pressed = self._context_color,
-            icon_color = self._icon_color,
-            icon_color_hover = self._icon_color_hover,
-            icon_color_pressed = self._icon_color_active,
-            icon_color_active = self._icon_color_active,
-            context_color = self._context_color,
-            text_foreground = self._text_foreground,
-            radius = 6,
-            icon_path = Functions.set_svg_icon("icon_close.svg")
-        )
 
         # ADD TO LAYOUT
         self.title_bar_layout.addWidget(self.bg)
