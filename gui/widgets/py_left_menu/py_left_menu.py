@@ -26,6 +26,7 @@ from . py_div import PyDiv
 # IMPORT FUNCTIONS
 # ///////////////////////////////////////////////////////////////
 from gui.core.functions import *
+from gui.core.json_settings import *
 
 # PY LEFT MENU
 # ///////////////////////////////////////////////////////////////
@@ -33,6 +34,7 @@ class PyLeftMenu(QWidget):
     # SIGNALS
     clicked = Signal(object)
     released = Signal(object)
+    settings = Settings()
 
     def __init__(
         self,
@@ -49,10 +51,10 @@ class PyLeftMenu(QWidget):
         context_color = "#568af2",
         text_foreground = "#8a95aa",
         text_active = "#dce1ec",
-        duration_time = 200,
+        duration_time = settings.items["time_animation"],
         radius = 8,
-        minimum_width = 50,
-        maximum_width = 240,
+        minimum_width = settings.items["lef_menu_size"]['minimum'],
+        maximum_width = settings.items["lef_menu_size"]['maximum'],
         icon_path = "icon_menu.svg",
         icon_path_close = "icon_menu_close.svg",
         toggle_text = "Hide Menu",

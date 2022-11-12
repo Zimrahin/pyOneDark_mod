@@ -126,15 +126,6 @@ class MainWindow(QMainWindow):
 					MainFunctions.toggle_left_column(self)
 					if btn.objectName() != "btn_settings":
 						self.ui.left_menu.select_only_one_tab(btn.objectName())
-
-			# # Change Left Column Menu
-			# if btn.objectName() != "btn_close_left_column":
-			# 	MainFunctions.set_left_column_menu(
-			# 		self, 
-			# 		menu = self.ui.left_column.menus.menu_1,
-			# 		title = "Settings Left Column",
-			# 		icon_path = Functions.set_svg_icon("icon_settings.svg")
-			# 	)
 		
 		# TITLE BAR MENU
 		# ///////////////////////////////////////////////////////////////

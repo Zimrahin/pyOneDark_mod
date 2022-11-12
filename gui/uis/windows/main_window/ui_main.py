@@ -107,6 +107,7 @@ class UI_MainWindow(object):
         # ///////////////////////////////////////////////////////////////
         left_menu_margin = self.settings["left_menu_content_margins"]
         left_menu_minimum = self.settings["lef_menu_size"]["minimum"]
+        left_menu_maximum = self.settings["lef_menu_size"]["maximum"]
         self.left_menu_frame = QFrame()
         self.left_menu_frame.setMaximumSize(left_menu_minimum + (left_menu_margin * 2), 17280)
         self.left_menu_frame.setMinimumSize(left_menu_minimum + (left_menu_margin * 2), 0)
