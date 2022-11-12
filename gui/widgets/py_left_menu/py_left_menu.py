@@ -49,7 +49,7 @@ class PyLeftMenu(QWidget):
         context_color = "#568af2",
         text_foreground = "#8a95aa",
         text_active = "#dce1ec",
-        duration_time = 500,
+        duration_time = 200,
         radius = 8,
         minimum_width = 50,
         maximum_width = 240,

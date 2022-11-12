@@ -65,7 +65,7 @@ class Settings(object):
 							"minimum" : 0,
 							"maximum" : 240
 						},
-						"time_animation" : 400,
+						"time_animation" : 200,
 						"font" : {
 							"family" : "Segoe UI",
 							"title_size" : 10,

@@ -112,27 +112,29 @@ class MainWindow(QMainWindow):
 			MainFunctions.set_page(self, self.ui.load_pages.page_3)
 
 		# SETTINGS LEFT
-		if btn.objectName() == "btn_close_left_column" or btn.objectName() == "btn_settings" :
-			# CHECK IF LEFT COLUMN IS VISIBLE
+		if btn.objectName() == "btn_close_left_column" or btn.objectName() == "btn_settings" or btn.objectName() == "btn_home" or btn.objectName() == "btn_open_file" or btn.objectName() == "btn_new_file" or btn.objectName() == 'btn_info':
 			if not MainFunctions.left_column_is_visible(self):
-				# Show / Hide
-				MainFunctions.toggle_left_column(self)
-				self.ui.left_menu.select_only_one_tab(btn.objectName())
-			else:
-				if btn.objectName() == "btn_close_left_column" or btn.objectName() == "btn_settings":
-					self.ui.left_menu.deselect_all_tab()
-					# Show / Hide
+				if btn.objectName() == "btn_settings" :
+				# CHECK IF LEFT COLUMN IS VISIBLE
+					# Show 
 					MainFunctions.toggle_left_column(self)
-				self.ui.left_menu.select_only_one_tab(btn.objectName())
+					self.ui.left_menu.select_only_one_tab(btn.objectName())
+			else:
+				if btn.objectName() == "btn_close_left_column" or btn.objectName() == "btn_settings" or btn.objectName() == "btn_home" or btn.objectName() == "btn_open_file" or btn.objectName() == "btn_new_file" or btn.objectName() == 'btn_info':
+					self.ui.left_menu.deselect_all_tab()
+					# Hide
+					MainFunctions.toggle_left_column(self)
+					if btn.objectName() != "btn_settings":
+						self.ui.left_menu.select_only_one_tab(btn.objectName())
 
-			# Change Left Column Menu
-			if btn.objectName() != "btn_close_left_column":
-				MainFunctions.set_left_column_menu(
-					self, 
-					menu = self.ui.left_column.menus.menu_1,
-					title = "Settings Left Column",
-					icon_path = Functions.set_svg_icon("icon_settings.svg")
-				)
+			# # Change Left Column Menu
+			# if btn.objectName() != "btn_close_left_column":
+			# 	MainFunctions.set_left_column_menu(
+			# 		self, 
+			# 		menu = self.ui.left_column.menus.menu_1,
+			# 		title = "Settings Left Column",
+			# 		icon_path = Functions.set_svg_icon("icon_settings.svg")
+			# 	)
 		
 		# TITLE BAR MENU
 		# ///////////////////////////////////////////////////////////////
