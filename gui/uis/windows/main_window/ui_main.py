@@ -19,7 +19,6 @@ from qt_core import *
 from gui.core.json_settings import Settings
 from gui.core.json_themes import Themes
 from gui.widgets import *
-# from . setup_main_window import *
 from gui.uis.pages.ui_main_pages import Ui_MainPages
 from gui.uis.columns.ui_right_column import Ui_RightColumn
 from gui.widgets.py_credits_bar.py_credits import PyCredits
@@ -68,7 +67,7 @@ class UI_MainWindow(object):
 		# Add here the custom left menu bar
 		left_menu_margin = self.settings["left_menu_content_margins"]
 		left_menu_minimum = self.settings["left_menu_size"]["minimum"]
-		left_menu_maximum = self.settings["left_menu_size"]["maximum"]
+		# left_menu_maximum = self.settings["left_menu_size"]["maximum"]
 		self.left_menu_frame = QFrame()
 		self.left_menu_frame.setMaximumSize(left_menu_minimum + (left_menu_margin * 2), 17280)
 		self.left_menu_frame.setMinimumSize(left_menu_minimum + (left_menu_margin * 2), 0)
@@ -84,7 +83,6 @@ class UI_MainWindow(object):
 
 		# ADD LEFT MENU
 		# Add custom left menu here
-		# ///////////////////////////////////////////////////////////////
 		self.left_menu = PyLeftMenu(
 			parent = self.left_menu_frame,
 			app_parent = self.central_widget, # For tooltip parent
@@ -134,14 +132,9 @@ class UI_MainWindow(object):
 		)
 		self.left_column_layout.addWidget(self.left_column)
 
-		# ADD RIGHT WIDGETS
+		# ADD RIGHT WIDGETS AND LAYOUT
 		self.right_app_frame = QFrame()
-
-		# ADD RIGHT APP LAYOUT
 		self.right_app_layout = QVBoxLayout(self.right_app_frame)
-		self.right_app_layout.setContentsMargins(3,3,3,3)
-		self.right_app_layout.setSpacing(6)
-
 
 		# ADD CUSTOM TITLE BAR TO LAYOUT
 		self.title_bar = PyTitleBar(
@@ -168,7 +161,6 @@ class UI_MainWindow(object):
 		)
 
 		# ADD CONTENT AREA
-		# ///////////////////////////////////////////////////////////////
 		self.content_area_frame = QFrame()
 
 		# CREATE LAYOUT
@@ -183,39 +175,10 @@ class UI_MainWindow(object):
 		self.load_pages = Ui_MainPages()
 		self.load_pages.setupUi(self.content_area_left_frame)
 
-		# RIGHT BAR
-		self.right_column_frame = QFrame()
-		self.right_column_frame.setMinimumWidth(self.settings["right_column_size"]["minimum"])
-		self.right_column_frame.setMaximumWidth(self.settings["right_column_size"]["minimum"])
-
-		# IMPORT RIGHT COLUMN
-		self.content_area_right_layout = QVBoxLayout(self.right_column_frame)
-		self.content_area_right_layout.setContentsMargins(5,5,5,5)
-		self.content_area_right_layout.setSpacing(0)
-
-		# RIGHT BG
-		self.content_area_right_bg_frame = QFrame()
-		self.content_area_right_bg_frame.setObjectName("content_area_right_bg_frame")
-		self.content_area_right_bg_frame.setStyleSheet(f'''
-		#content_area_right_bg_frame {{
-			border-radius: 8px;
-			background-color: {self.themes["app_color"]["bg_two"]};
-		}}
-		''')
-
-		# ADD BG
-		self.content_area_right_layout.addWidget(self.content_area_right_bg_frame)
-
-		# ADD RIGHT PAGES TO RIGHT COLUMN
-		self.right_column = Ui_RightColumn()
-		self.right_column.setupUi(self.content_area_right_bg_frame)
-
 		# ADD TO LAYOUTS
 		self.content_area_layout.addWidget(self.content_area_left_frame)
-		self.content_area_layout.addWidget(self.right_column_frame)
 
 		# CREDITS / BOTTOM APP FRAME
-		# ///////////////////////////////////////////////////////////////
 		self.credits_frame = QFrame()
 		self.credits_frame.setMinimumHeight(26)
 		self.credits_frame.setMaximumHeight(26)
