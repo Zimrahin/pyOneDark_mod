@@ -54,7 +54,7 @@ class Settings(object):
 						],
 						"lef_menu_size" : {
 							"minimum" : 50,
-							"maximum" : 140
+							"maximum" : 160
 						},
 						"left_menu_content_margins" : 3,
 						"left_column_size" : {
