@@ -21,7 +21,7 @@ from qt_core import *
 from gui.core.json_settings import Settings
 from gui.core.json_themes import Themes
 from gui.widgets import *
-from . ui_main import *
+from . ui_main import UI_MainWindow
 from . functions_main_window import *
 
 class SetupMainWindow:

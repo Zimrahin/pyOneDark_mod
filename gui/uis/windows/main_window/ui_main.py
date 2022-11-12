@@ -19,7 +19,7 @@ from qt_core import *
 from gui.core.json_settings import Settings
 from gui.core.json_themes import Themes
 from gui.widgets import *
-from . setup_main_window import *
+# from . setup_main_window import *
 from gui.uis.pages.ui_main_pages import Ui_MainPages
 from gui.uis.columns.ui_right_column import Ui_RightColumn
 from gui.widgets.py_credits_bar.py_credits import PyCredits

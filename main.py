@@ -46,7 +46,6 @@ class MainWindow(QMainWindow):
 		self.settings = settings.items
 
 		# SETUP MAIN WINDOW
-		self.hide_grips = True # Show/Hide resize grips
 		SetupMainWindow.setup_gui(self)
 
 		# SHOW MAIN WINDOW
