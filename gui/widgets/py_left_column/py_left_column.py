@@ -158,7 +158,7 @@ class PyLeftColumn(QWidget):
         self.btn_close = PyLeftButton(
             self._parent,
             self._app_parent,
-            tooltip_text = "Hide",
+            # tooltip_text = "Hide",
             dark_one = self._dark_one,
             bg_color = self._btn_color,
             bg_color_hover = self._btn_color_hover,

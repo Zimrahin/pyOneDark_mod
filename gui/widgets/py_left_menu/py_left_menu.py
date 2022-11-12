@@ -58,7 +58,7 @@ class PyLeftMenu(QWidget):
         icon_path = "icon_menu.svg",
         icon_path_close = "icon_menu_close.svg",
         toggle_text = "Hide Menu",
-        toggle_tooltip = "Show menu"
+        toggle_tooltip = "Show Menu"
     ):
         super().__init__()
 
@@ -142,7 +142,7 @@ class PyLeftMenu(QWidget):
                     self._app_parent,
                     text = _btn_text,
                     btn_id = _btn_id,
-                    tooltip_text = _btn_tooltip,
+                    # tooltip_text = _btn_tooltip,
                     dark_one = self._dark_one,
                     dark_three = self._dark_three,
                     dark_four = self._dark_four,
@@ -192,6 +192,7 @@ class PyLeftMenu(QWidget):
             self.toggle_button.set_active_toggle(False)
             self.toggle_button.set_icon(self._icon_path)
         self.animation.setEasingCurve(QEasingCurve.InOutCubic)
+        # self.animation.setEasingCurve(QEasingCurve.OutBack)
         self.animation.setDuration(self._duration_time)
         self.animation.start()
 

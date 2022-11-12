@@ -96,8 +96,7 @@ class UI_MainWindow(object):
         )
         
         # If disable custom title bar
-        if not self.settings["custom_title_bar"]:
-            self.window.set_stylesheet(border_radius = 0, border_size = 0)
+        self.window.set_stylesheet(border_radius = 0, border_size = 0)
         
         # ADD PY WINDOW TO CENTRAL WIDGET
         self.central_widget_layout.addWidget(self.window)
@@ -215,7 +214,7 @@ class UI_MainWindow(object):
             title_size = self.settings["font"]["title_size"],
             is_custom_title_bar = self.settings["custom_title_bar"]
         )
-        self.title_bar_layout.addWidget(self.title_bar)
+        # self.title_bar_layout.addWidget(self.title_bar)
 
         # ADD CONTENT AREA
         # ///////////////////////////////////////////////////////////////
@@ -290,7 +289,7 @@ class UI_MainWindow(object):
 
         # ADD WIDGETS TO RIGHT LAYOUT
         # ///////////////////////////////////////////////////////////////
-        self.right_app_layout.addWidget(self.title_bar_frame)
+        # self.right_app_layout.addWidget(self.title_bar_frame)
         self.right_app_layout.addWidget(self.content_area_frame)
         self.right_app_layout.addWidget(self.credits_frame)
         

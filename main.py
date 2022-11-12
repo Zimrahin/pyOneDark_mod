@@ -42,8 +42,11 @@ from gui.widgets import *
 os.environ["QT_FONT_DPI"] = "96"
 # IF IS 4K MONITOR ENABLE 'os.environ["QT_SCALE_FACTOR"] = "2"'
 
-# MAIN WINDOW
-# ///////////////////////////////////////////////////////////////
+# https://stackoverflow.com/questions/1551605/how-to-set-applications-taskbar-icon-in-windows-7/1552105#1552105
+import ctypes
+myappid = 'StepperMotorController' # arbitrary string
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
@@ -80,9 +83,10 @@ class MainWindow(QMainWindow):
 		if btn.objectName() != "btn_settings":
 			self.ui.left_menu.deselect_all_tab()
 
+		# COMENTAR ESTO ELIMINA LA BARRA DE TITULO
 		# Get Title Bar Btn And Reset Active         
-		top_settings = MainFunctions.get_title_bar_btn(self, "btn_top_settings")
-		top_settings.set_active(False)
+		# top_settings = MainFunctions.get_title_bar_btn(self, "btn_top_settings")
+		# top_settings.set_active(False)
 
 		# LEFT MENU
 		# ///////////////////////////////////////////////////////////////
@@ -153,7 +157,7 @@ class MainWindow(QMainWindow):
 
 	# LEFT MENU BTN IS RELEASED
 	# Run function when btn is released
-	# Check funtion by object name / btn_id
+	# Check function by object name / btn_id
 	# ///////////////////////////////////////////////////////////////
 	def btn_released(self):
 		# GET BT CLICKED

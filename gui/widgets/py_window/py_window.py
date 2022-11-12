@@ -76,12 +76,7 @@ class PyWindow(QFrame):
 
         # ADD LAYOUT
         # ///////////////////////////////////////////////////////////////
-        if layout == Qt.Vertical:
-            # VERTICAL LAYOUT
-            self.layout = QHBoxLayout(self)
-        else:
-            # HORIZONTAL LAYOUT
-            self.layout = QHBoxLayout(self)
+        self.layout = QHBoxLayout(self)
         self.layout.setContentsMargins(margin, margin, margin, margin)
         self.layout.setSpacing(spacing)
 

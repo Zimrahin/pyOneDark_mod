@@ -71,15 +71,15 @@ class PyLeftButton(QPushButton):
         self._app_parent = app_parent
 
         # TOOLTIP
-        self._tooltip_text = tooltip_text
-        self._tooltip = _ToolTip(
-            app_parent,
-            tooltip_text,
-            dark_one,
-            context_color,
-            text_foreground
-        )
-        self._tooltip.hide()
+        # self._tooltip_text = tooltip_text
+        # self._tooltip = _ToolTip(
+        #     app_parent,
+        #     tooltip_text,
+        #     dark_one,
+        #     context_color,
+        #     text_foreground
+        # )
+        # self._tooltip.hide()
 
     # SET ACTIVE MENU
     # ///////////////////////////////////////////////////////////////
@@ -150,16 +150,16 @@ class PyLeftButton(QPushButton):
     # ///////////////////////////////////////////////////////////////
     def enterEvent(self, event):
         self.change_style(QEvent.Enter)
-        self.move_tooltip()
-        self._tooltip.show()
+        # self.move_tooltip()
+        # self._tooltip.show()
 
     # MOUSE LEAVE
     # Event fired when the mouse leaves the BTN
     # ///////////////////////////////////////////////////////////////
     def leaveEvent(self, event):
         self.change_style(QEvent.Leave)
-        self.move_tooltip()
-        self._tooltip.hide()
+        # self.move_tooltip()
+        # self._tooltip.hide()
 
     # MOUSE PRESS
     # Event triggered when the left button is pressed
@@ -216,12 +216,12 @@ class PyLeftButton(QPushButton):
 
         # FORMAT POSITION
         # Adjust tooltip position with offset
-        pos_x = (pos.x() - self._tooltip.width()) + self.width() + 5
-        pos_y = pos.y() + self._top_margin
+        # pos_x = (pos.x() - self._tooltip.width()) + self.width() + 5
+        # pos_y = pos.y() + self._top_margin
 
         # SET POSITION TO WIDGET
         # Move tooltip position
-        self._tooltip.move(pos_x, pos_y)
+        # self._tooltip.move(pos_x, pos_y)
 
 # TOOLTIP
 # ///////////////////////////////////////////////////////////////

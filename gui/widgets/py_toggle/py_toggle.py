@@ -25,7 +25,7 @@ class PyToggle(QCheckBox):
         bg_color = "#777", 
         circle_color = "#DDD",
         active_color = "#00BCFF",
-        animation_curve = QEasingCurve.OutBounce
+        animation_curve = QEasingCurve.InOutCubic
     ):
         QCheckBox.__init__(self)
         self.setFixedSize(width, 28)
@@ -39,7 +39,7 @@ class PyToggle(QCheckBox):
         self._position = 3
         self.animation = QPropertyAnimation(self, b"position")
         self.animation.setEasingCurve(animation_curve)
-        self.animation.setDuration(500)
+        self.animation.setDuration(60)
         self.stateChanged.connect(self.setup_animation)
 
     @Property(float)

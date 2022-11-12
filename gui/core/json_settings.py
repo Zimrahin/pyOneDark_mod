@@ -68,8 +68,8 @@ class Settings(object):
 						"time_animation" : 200,
 						"font" : {
 							"family" : "Segoe UI",
-							"title_size" : 10,
-							"text_size" : 9
+							"title_size" : 11,
+							"text_size" : 10
 						}
 					}
 
