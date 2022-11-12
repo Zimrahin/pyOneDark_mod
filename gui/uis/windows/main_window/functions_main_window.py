@@ -14,35 +14,23 @@
 #
 # ///////////////////////////////////////////////////////////////
 
-# IMPORT PACKAGES AND MODULES
-# ///////////////////////////////////////////////////////////////
 import sys
-
-# IMPORT QT CORE
-# ///////////////////////////////////////////////////////////////
 from qt_core import *
-
-# LOAD UI MAIN
-# ///////////////////////////////////////////////////////////////
 from . ui_main import *
 
-# FUNCTIONS
 class MainFunctions():
     def __init__(self):
         super().__init__()
         # SETUP MAIN WINDOw
         # Load widgets from "gui\uis\main_window\ui_main.py"
-        # ///////////////////////////////////////////////////////////////
         self.ui = UI_MainWindow()
         self.ui.setup_ui(self)
 
     # SET MAIN WINDOW PAGES
-    # ///////////////////////////////////////////////////////////////
     def set_page(self, page):
         self.ui.load_pages.pages.setCurrentWidget(page)
 
     # SET LEFT COLUMN PAGES
-    # ///////////////////////////////////////////////////////////////
     def set_left_column_menu(
         self,
         menu,
@@ -54,7 +42,6 @@ class MainFunctions():
         self.ui.left_column.icon.set_icon(icon_path)
 
     # RETURN IF LEFT COLUMN IS VISIBLE
-    # ///////////////////////////////////////////////////////////////
     def left_column_is_visible(self):
         width = self.ui.left_column_frame.width()
         if width == 0:
@@ -63,7 +50,6 @@ class MainFunctions():
             return True
 
     # RETURN IF RIGHT COLUMN IS VISIBLE
-    # ///////////////////////////////////////////////////////////////
     def right_column_is_visible(self):
         width = self.ui.right_column_frame.width()
         if width == 0:
@@ -72,31 +58,27 @@ class MainFunctions():
             return True
 
     # SET RIGHT COLUMN PAGES
-    # ///////////////////////////////////////////////////////////////
     def set_right_column_menu(self, menu):
         self.ui.right_column.menus.setCurrentWidget(menu)
 
     # GET TITLE BUTTON BY OBJECT NAME
-    # ///////////////////////////////////////////////////////////////
     def get_title_bar_btn(self, object_name):
         return self.ui.title_bar_frame.findChild(QPushButton, object_name)
 
     # GET TITLE BUTTON BY OBJECT NAME
-    # ///////////////////////////////////////////////////////////////
     def get_left_menu_btn(self, object_name):
         return self.ui.left_menu.findChild(QPushButton, object_name)
     
-    # LEDT AND RIGHT COLUMNS / SHOW / HIDE
-    # ///////////////////////////////////////////////////////////////
+    # LEFT AND RIGHT COLUMNS / SHOW / HIDE
     def toggle_left_column(self):
-        # GET ACTUAL CLUMNS SIZE
+        # GET ACTUAL COLUMNS SIZE
         width = self.ui.left_column_frame.width()
         right_column_width = self.ui.right_column_frame.width()
 
         MainFunctions.start_box_animation(self, width, right_column_width, "left")
 
     def toggle_right_column(self):
-        # GET ACTUAL CLUMNS SIZE
+        # GET ACTUAL COLUMNS SIZE
         left_column_width = self.ui.left_column_frame.width()
         width = self.ui.right_column_frame.width()
 

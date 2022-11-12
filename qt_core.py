@@ -15,13 +15,7 @@
 # ///////////////////////////////////////////////////////////////
 
 # QT CORE
-# Change for PySide Or PyQt
-# ///////////////////////// WARNING: ////////////////////////////
-# Remember that changing to PyQt too many modules will have 
-# problems because some classes have different names like: 
-# Property (pyqtProperty), Slot (pyqtSlot), Signal (pyqtSignal)
-# among others.
-# ///////////////////////////////////////////////////////////////
+# Change for PySide or PyQt
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
