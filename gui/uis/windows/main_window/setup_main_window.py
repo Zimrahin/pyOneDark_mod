@@ -68,22 +68,6 @@ class SetupMainWindow:
             "is_active" : True
         },
         {
-            "btn_icon" : "icon_widgets.svg",
-            "btn_id" : "btn_widgets",
-            "btn_text" : "Show Custom Widgets",
-            "btn_tooltip" : "Show custom widgets",
-            "show_top" : True,
-            "is_active" : False
-        },
-        {
-            "btn_icon" : "icon_add_user.svg",
-            "btn_id" : "btn_add_user",
-            "btn_text" : "Add Users",
-            "btn_tooltip" : "Add users",
-            "show_top" : True,
-            "is_active" : False
-        },
-        {
             "btn_icon" : "icon_file.svg",
             "btn_id" : "btn_new_file",
             "btn_text" : "New File",
@@ -99,14 +83,14 @@ class SetupMainWindow:
             "show_top" : True,
             "is_active" : False
         },
-        {
-            "btn_icon" : "icon_save.svg",
-            "btn_id" : "btn_save",
-            "btn_text" : "Save File",
-            "btn_tooltip" : "Save file",
-            "show_top" : True,
-            "is_active" : False
-        },
+        # {
+        #     "btn_icon" : "icon_save.svg",
+        #     "btn_id" : "btn_save",
+        #     "btn_text" : "Save File",
+        #     "btn_tooltip" : "Save file",
+        #     "show_top" : True,
+        #     "is_active" : False
+        # },
         {
             "btn_icon" : "icon_info.svg",
             "btn_id" : "btn_info",
@@ -160,24 +144,6 @@ class SetupMainWindow:
         # ///////////////////////////////////////////////////////////////
         self.setWindowTitle(self.settings["app_name"])
         
-        # REMOVE TITLE BAR
-        # ///////////////////////////////////////////////////////////////
-        if self.settings["custom_title_bar"]:
-            self.setWindowFlag(Qt.FramelessWindowHint)
-            self.setAttribute(Qt.WA_TranslucentBackground)
-
-        # ADD GRIPS
-        # ///////////////////////////////////////////////////////////////
-        if self.settings["custom_title_bar"]:
-            self.left_grip = PyGrips(self, "left", self.hide_grips)
-            self.right_grip = PyGrips(self, "right", self.hide_grips)
-            self.top_grip = PyGrips(self, "top", self.hide_grips)
-            self.bottom_grip = PyGrips(self, "bottom", self.hide_grips)
-            self.top_left_grip = PyGrips(self, "top_left", self.hide_grips)
-            self.top_right_grip = PyGrips(self, "top_right", self.hide_grips)
-            self.bottom_left_grip = PyGrips(self, "bottom_left", self.hide_grips)
-            self.bottom_right_grip = PyGrips(self, "bottom_right", self.hide_grips)
-
         # LEFT MENUS / GET SIGNALS WHEN LEFT MENU BTN IS CLICKED / RELEASED
         # ///////////////////////////////////////////////////////////////
         # ADD MENUS
@@ -195,12 +161,6 @@ class SetupMainWindow:
         # SET SIGNALS
         self.ui.title_bar.clicked.connect(self.btn_clicked)
         self.ui.title_bar.released.connect(self.btn_released)
-
-        # ADD Title
-        if self.settings["custom_title_bar"]:
-            self.ui.title_bar.set_title(self.settings["app_name"])
-        else:
-            self.ui.title_bar.set_title("Welcome to PyOneDark")
 
         # LEFT COLUMN SET SIGNALS
         # ///////////////////////////////////////////////////////////////
