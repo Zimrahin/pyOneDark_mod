@@ -136,30 +136,6 @@ class UI_MainWindow(object):
 		self.right_app_frame = QFrame()
 		self.right_app_layout = QVBoxLayout(self.right_app_frame)
 
-		# ADD CUSTOM TITLE BAR TO LAYOUT
-		self.title_bar = PyTitleBar(
-			parent,
-			logo_width = 100,
-			app_parent = self.central_widget,
-			logo_image = "logo_top_100x22.svg",
-			bg_color = self.themes["app_color"]["bg_two"],
-			div_color = self.themes["app_color"]["bg_three"],
-			btn_bg_color = self.themes["app_color"]["bg_two"],
-			btn_bg_color_hover = self.themes["app_color"]["bg_three"],
-			btn_bg_color_pressed = self.themes["app_color"]["bg_one"],
-			icon_color = self.themes["app_color"]["icon_color"],
-			icon_color_hover = self.themes["app_color"]["icon_hover"],
-			icon_color_pressed = self.themes["app_color"]["icon_pressed"],
-			icon_color_active = self.themes["app_color"]["icon_active"],
-			context_color = self.themes["app_color"]["context_color"],
-			dark_one = self.themes["app_color"]["dark_one"],
-			text_foreground = self.themes["app_color"]["text_foreground"],
-			radius = 8,
-			font_family = self.settings["font"]["family"],
-			title_size = self.settings["font"]["title_size"],
-			is_custom_title_bar = self.settings["custom_title_bar"]
-		)
-
 		# ADD CONTENT AREA
 		self.content_area_frame = QFrame()
 
